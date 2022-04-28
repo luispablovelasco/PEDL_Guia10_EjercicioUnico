@@ -64,25 +64,22 @@ namespace PEDL_Guia10_EjercicioUnico
 
         private void CMSCrearVertice_Click(object sender, EventArgs e)
         {
-            nuevoNodo = new CVertice( );
-            var_control = 2;            //Recordemos que es usado para indicar el estado de la pizarra
+            
         }
 
         private void Pizarra_MouseUp(object sender, MouseEventArgs e)
         {
             switch (var_control)
             {
-
-                case 1:     //Dibujando arco
+                case 1: //Dibujando arco
                     if ((NodoDestino = grafo.DetectarPunto(e.Location)) != null && NodoOrigen != NodoDestino)
                     {
-                        if (grafo.AgregarArco(NodoOrigen, NodoDestino)) //Se procede a crear la arista
+                        if (grafo.AgregarArco(NodoOrigen, NodoDestino)) //Creando la arista
                         {
                             int distancia = 0;
                             NodoOrigen.ListaAdyacencia.Find(v => v.nDestino == NodoDestino).peso = distancia;
                         }
                     }
-
                     var_control = 0;
                     NodoOrigen = null;
                     NodoDestino = null;
@@ -98,7 +95,6 @@ namespace PEDL_Guia10_EjercicioUnico
 
             switch (var_control)
             {
-
                 case 2:
                     if (nuevoNodo != null)
                     {
@@ -121,33 +117,34 @@ namespace PEDL_Guia10_EjercicioUnico
                     }
                     break;
 
-                case 1:         //Dibujar arco
+                case 1: //Dibujando el arco
                     AdjustableArrowCap bigArrow = new AdjustableArrowCap(4, 4, true);
                     bigArrow.BaseCap = System.Drawing.Drawing2D.LineCap.Triangle;
 
                     Pizarra.Refresh();
                     Pizarra.CreateGraphics().DrawLine(new Pen(Brushes.Black, 2)
-                    {
-                        CustomEndCap = bigArrow
-                    }, NodoOrigen.Posicion, e.Location);
+                    { CustomEndCap = bigArrow },
+                    NodoOrigen.Posicion, e.Location);
                     break;
+
             }
         }
 
         private void Pizarra_MouseDown(object sender, MouseEventArgs e)
         {
-            if (e.Button == System.Windows.Forms.MouseButtons.Left)     //Si se ha presionado el boton izquierdo del mouse
+            if (e.Button == System.Windows.Forms.MouseButtons.Left) //Si se ha presionado el botón izquierdo del mouse
             {
-                if ((NodoOrigen = grafo.DetectarPunto (e.Location)) != null)
+
+                if ((NodoOrigen = grafo.DetectarPunto(e.Location)) != null)
                 {
-                    var_control = 1;    
+                    var_control = 1; //Como var_control = 1, significa que la pizarra esta en el estado
+                                     //de dibujando arco
                 }
 
                 if (nuevoNodo != null && NodoOrigen == null)
                 {
                     ventanaVertice.Visible = false;
                     ventanaVertice.control = false;
-                    grafo.AgregarVertice(nuevoNodo);
                     ventanaVertice.ShowDialog();
 
                     if (ventanaVertice.control)
@@ -155,20 +152,20 @@ namespace PEDL_Guia10_EjercicioUnico
                         if (grafo.BuscarVertice(ventanaVertice.txtVertice.Text) == null)
                         {
                             nuevoNodo.Valor = ventanaVertice.txtVertice.Text;
+                            grafo.AgregarVertice(nuevoNodo);
                         }
                         else
                         {
-                            MessageBox.Show("El nodo "+ ventanaVertice.txtVertice.Text + " ya existe en el grafo","Error nuevo nodo", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                            MessageBox.Show("El Nodo " + ventanaVertice.txtVertice.Text + " ya existe en el grafo", "Error nuevo Nodo", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                         }
                     }
                     nuevoNodo = null;
                     var_control = 0;
-
                     Pizarra.Refresh();
                 }
             }
 
-            if (e.Button == System.Windows.Forms.MouseButtons.Right)    //Si se ha presionado el boton derecho del mouse
+            if (e.Button == System.Windows.Forms.MouseButtons.Right) //Si se ha presionado el botón derecho del mouse
             {
                 if (var_control == 0)
                 {
@@ -177,11 +174,17 @@ namespace PEDL_Guia10_EjercicioUnico
                         CMSCrearVertice.Text = "Nodo" + NodoOrigen.Valor;
                     }
                     else
-                    {
                         Pizarra.ContextMenuStrip = this.CMSCrearVertice;
-                    }
                 }
+
+
             }
+        }
+
+        private void nuevoVerticeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            nuevoNodo = new CVertice();
+            var_control = 2;
         }
     }
 }

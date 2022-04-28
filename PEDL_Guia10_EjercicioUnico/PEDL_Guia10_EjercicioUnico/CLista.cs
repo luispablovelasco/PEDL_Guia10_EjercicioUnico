@@ -82,7 +82,7 @@ namespace PEDL_Guia10_EjercicioUnico
                 if (aElemento == null)
                 {
 
-                    aElemento = new CVertice(pElemento.nombre);
+                    aElemento = new CVertice(pElemento.Valor);
                     aPeso = pPeso;
                     aSubLista = new CLista();
 

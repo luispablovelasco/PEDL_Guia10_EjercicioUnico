@@ -32,6 +32,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.Pizarra = new System.Windows.Forms.Panel();
             this.CMSCrearVertice = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.nuevoVerticeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.CMSCrearVertice.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -47,9 +49,10 @@
             // 
             // Pizarra
             // 
+            this.Pizarra.BackColor = System.Drawing.SystemColors.Info;
             this.Pizarra.Location = new System.Drawing.Point(12, 54);
             this.Pizarra.Name = "Pizarra";
-            this.Pizarra.Size = new System.Drawing.Size(822, 321);
+            this.Pizarra.Size = new System.Drawing.Size(822, 441);
             this.Pizarra.TabIndex = 1;
             this.Pizarra.Paint += new System.Windows.Forms.PaintEventHandler(this.Pizarra_Paint);
             this.Pizarra.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Pizarra_MouseDown);
@@ -59,21 +62,31 @@
             // 
             // CMSCrearVertice
             // 
+            this.CMSCrearVertice.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.nuevoVerticeToolStripMenuItem});
             this.CMSCrearVertice.Name = "CMSCrearVertice";
-            this.CMSCrearVertice.Size = new System.Drawing.Size(61, 4);
+            this.CMSCrearVertice.Size = new System.Drawing.Size(153, 48);
             this.CMSCrearVertice.Opening += new System.ComponentModel.CancelEventHandler(this.CMSCrearVertice_Opening);
             this.CMSCrearVertice.Click += new System.EventHandler(this.CMSCrearVertice_Click);
+            // 
+            // nuevoVerticeToolStripMenuItem
+            // 
+            this.nuevoVerticeToolStripMenuItem.Name = "nuevoVerticeToolStripMenuItem";
+            this.nuevoVerticeToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.nuevoVerticeToolStripMenuItem.Text = "Nuevo Vertice";
+            this.nuevoVerticeToolStripMenuItem.Click += new System.EventHandler(this.nuevoVerticeToolStripMenuItem_Click);
             // 
             // Simulador
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(846, 387);
+            this.ClientSize = new System.Drawing.Size(846, 507);
             this.Controls.Add(this.Pizarra);
             this.Controls.Add(this.label1);
             this.Name = "Simulador";
             this.Text = "Simulador de Grafos";
             this.Load += new System.EventHandler(this.Simulador_Load);
+            this.CMSCrearVertice.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -84,6 +97,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel Pizarra;
         private System.Windows.Forms.ContextMenuStrip CMSCrearVertice;
+        private System.Windows.Forms.ToolStripMenuItem nuevoVerticeToolStripMenuItem;
     }
 }
 

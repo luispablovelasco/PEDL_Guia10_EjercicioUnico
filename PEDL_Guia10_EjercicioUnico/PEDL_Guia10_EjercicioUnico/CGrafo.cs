@@ -81,7 +81,7 @@ namespace PEDL_Guia10_EjercicioUnico
         }
 
         //Metodo para detectar si se ha posicionado sobre algun nodo y lo devuelve
-        public CVertice DetectarPunto(Pont posicionMouse)
+        public CVertice DetectarPunto(Point posicionMouse)
         {
             foreach (CVertice nodoActual in nodos)
                 if (nodoActual.DetectarPunto(posicionMouse)) return nodoActual;

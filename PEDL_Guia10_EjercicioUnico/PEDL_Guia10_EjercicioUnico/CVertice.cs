@@ -36,7 +36,7 @@ namespace PEDL_Guia10_EjercicioUnico
         }
         public Point Posicion
         {
-            get { return_posicion; }
+            get { return _posicion; }
             set { _posicion = value; }
         }
         public Size Dimensiones
@@ -72,6 +72,8 @@ namespace PEDL_Guia10_EjercicioUnico
 
         }
 
+        public CVertice() : this(" ") { }       //Constructor por defecto
+
         // Método para dibujar el nodo
         public void DibujarVertice(Graphics g)
         {
@@ -79,7 +81,7 @@ namespace PEDL_Guia10_EjercicioUnico
 
             // Definimos donde dibujaremos el nodo
 
-            Rectangle areaNodo = new Rectangle(this._posicion X - radio, this._posicion.Y - radio, this.dimensiones.Width, this.dimensiones.Height);
+            Rectangle areaNodo = new Rectangle(this._posicion.X - radio, this._posicion.Y - radio, this.dimensiones.Width, this.dimensiones.Height);
 
             g.FillEllipse(b, areaNodo);
 
@@ -92,6 +94,7 @@ namespace PEDL_Guia10_EjercicioUnico
             g.DrawEllipse(new Pen(Brushes.Black, (float)1.0), areaNodo);
             b.Dispose(); // Para liberar los recursos utilizados por el objeto
         }
+
 
         //Metodo para dibujar los arcos
         public void DibujarArco(Graphics g)
@@ -109,7 +112,7 @@ namespace PEDL_Guia10_EjercicioUnico
                 AdjustableArrowCap bigArrow = new AdjustableArrowCap(4, 4, true);
                 bigArrow.BaseCap = System.Drawing.Drawing2D.LineCap.Triangle;
 
-                g.DrawLine(new Pen(new SolidBrush(arco.color), arco.grosor_flecha) { CustomEnCap = bigArrow, ContentAlignment = PenAlignment.Center }, _posicion, new Point(arco.nDestino.Posicion.X + (int)(radio * difX / distancia), arco.nDestino.Posicion.Y + (int)(radio * difY / distancia))
+                g.DrawLine (new Pen(new SolidBrush(arco.color), arco.grosor_flecha) { CustomEndCap = bigArrow, Alignment = PenAlignment.Center }, _posicion, new Point(arco.nDestino.Posicion.X + (int)(radio * difX / distancia), arco.nDestino.Posicion.Y + (int)(radio * difY / distancia))
                 );
 
                 g.DrawString(
@@ -132,9 +135,9 @@ namespace PEDL_Guia10_EjercicioUnico
         public bool DetectarPunto(Point p)
         {
             GraphicsPath posicion = new GraphicsPath();
-            posicion.AddEllipse(new Rectangle(this._posicion.X - this.dimensiones.Width / 2,
-            this._posicion.Y - this.dimensiones.Height / 2,
-            this.dimensiones.Width, this.dimensiones.Height));
+
+            posicion.AddEllipse(new Rectangle(this._posicion.X - this.dimensiones.Width / 2, this._posicion.Y - this.dimensiones.Height / 2, this.dimensiones.Width, this.dimensiones.Height));
+
             bool retval = posicion.IsVisible(p);
             posicion.Dispose();
             return retval;
