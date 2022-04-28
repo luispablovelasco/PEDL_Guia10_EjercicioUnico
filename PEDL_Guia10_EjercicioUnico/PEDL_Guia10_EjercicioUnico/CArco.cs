@@ -12,10 +12,10 @@ namespace PEDL_Guia10_EjercicioUnico
 
         //Atributos
 
-        public CVertice nDestino;
-        public int peso;            //Peso (Valor) de cada arco (Arista)
-        public float grosor_flecha;
-        public Color color;
+        public CVertice nDestino;       //Nodo que estara en la punta del arco
+        public int peso;                //Peso (Valor) de cada arco (Arista)
+        public float grosor_flecha;     //Parametro para saber cual será el valor de grosor del arco a la hora de ser dibujado
+        public Color color;             //Establece el color del arco
 
 
         // Métodos

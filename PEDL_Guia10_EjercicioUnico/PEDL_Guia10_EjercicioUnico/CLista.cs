@@ -11,9 +11,9 @@ namespace PEDL_Guia10_EjercicioUnico
 
         //-------------------------------------------------- Atributos -----------------------------------------
 
-        private CVertice aElemento;
-        private CLista aSubLista;
-        private int aPeso;
+        private CVertice aElemento; //Elemento que estará en el nodo
+        private CLista aSubLista;   //Lista secundaria para las operaciones internas
+        private int aPeso;          //Distancia que hay entre 2 aristas
 
 
         //----------------------------------------- Constructores ----------------------------------
@@ -75,7 +75,7 @@ namespace PEDL_Guia10_EjercicioUnico
             return aElemento == null;
         }
 
-        public void Agregar(CVertice pElemento, int pPeso)
+        public void Agregar(CVertice pElemento, int pPeso) //Agrega un vertice junto con su respectivo peso
         {
             if (pElemento != null)
             {
@@ -96,7 +96,7 @@ namespace PEDL_Guia10_EjercicioUnico
         }
 
 
-        public void Eliminar(CVertice pElemento)
+        public void Eliminar(CVertice pElemento)    //Elimina una arista de la lista unicamente
         {
             if (aElemento != null)
             {
@@ -110,7 +110,7 @@ namespace PEDL_Guia10_EjercicioUnico
             }
         }
 
-        public int NroElementos()
+        public int NroElementos()       //Devuelve ala cantidad de aristas que hay dentro de la lista
         {
             if (aElemento != null)
                 return 1 + aSubLista.NroElementos();
@@ -118,7 +118,7 @@ namespace PEDL_Guia10_EjercicioUnico
                 return 0;
         }
 
-        public object lesimoElemento(int posicion)
+        public object lesimoElemento(int posicion)      //Devuelve la posicion de un elemtento en especifico
         {
             if ((posicion > 0) && (posicion <= NroElementos()))
                 if (posicion == 1)
@@ -129,7 +129,7 @@ namespace PEDL_Guia10_EjercicioUnico
                 return null;
         }
 
-        public object lesimoElementoPeso(int posicion)
+        public object lesimoElementoPeso(int posicion)      //Devulve el peso de un elemento en especifico
         {
             if ((posicion > 0) && (posicion <= NroElementos()))
                 if (posicion == 1)
@@ -140,7 +140,7 @@ namespace PEDL_Guia10_EjercicioUnico
                 return 0;
         }
 
-        public bool ExisteElemento(CVertice pElemento)
+        public bool ExisteElemento(CVertice pElemento)      //Verifica si el elemento existe (lo devuelve) o si no existe (False)
         {
             if ((aElemento != null) && (pElemento != null))
             {
@@ -150,7 +150,7 @@ namespace PEDL_Guia10_EjercicioUnico
                 return false;
         }
 
-        public int PosicionElemento(CVertice pElemento)
+        public int PosicionElemento(CVertice pElemento)     
         {
 
             if ((aElemento != null) || (ExisteElemento(pElemento)))

@@ -14,6 +14,14 @@ namespace PEDL_Guia10_EjercicioUnico
     public partial class Simulador : Form
     {
 
+        /*
+            ======================================= Investigación Complementaria ===========================================
+
+
+            1) Identificar que tipo de estructura es utilizada para el manejo del grafo
+            R/ Se utiliza una lista creada desde 0, con cada una de sus funciones
+        */
+
         private CGrafo grafo;           //Instanciamos la clase CGrafo
         private CVertice nuevoNodo;     //Instanciamos la clase CVertice para crear el nodo "nuevoNodo"
         private CVertice NodoOrigen;    //Instanciamos la clase CVertice para crear el nodo "NuevoOrigen"
@@ -23,6 +31,7 @@ namespace PEDL_Guia10_EjercicioUnico
         //Variable para el control de ventanas modales
         private Vertice ventanaVertice;     //Ventrana para agregar los vertices 
 
+        
 
         public Simulador()
         {
@@ -32,6 +41,7 @@ namespace PEDL_Guia10_EjercicioUnico
             var_control = 0;
             ventanaVertice = new Vertice();
             this.SetStyle(ControlStyles.AllPaintingInWmPaint | ControlStyles.UserPaint | ControlStyles.OptimizedDoubleBuffer, true);
+            lbnodos.DataSource = 
         }
 
         private void Pizarra_Paint(object sender, PaintEventArgs e)
@@ -185,6 +195,24 @@ namespace PEDL_Guia10_EjercicioUnico
         {
             nuevoNodo = new CVertice();
             var_control = 2;
+        }
+
+        private void btnEliminarNodo_Click(object sender, EventArgs e)
+        {
+            if (txtEliminarNodo.Text == "")
+            {
+                MessageBox.Show("Debe de ingresar un nodo ");
+            }
+
+            if (grafo.BuscarVertice(txtEliminarNodo.Text) == null)
+            {
+                MessageBox.Show("El dato que ingresó, no se encuentra en el grafo");
+                return;
+            }
+            else
+            {
+
+            }
         }
     }
 }

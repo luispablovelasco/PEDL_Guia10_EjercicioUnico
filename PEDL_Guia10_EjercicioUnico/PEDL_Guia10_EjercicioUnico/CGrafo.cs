@@ -26,6 +26,15 @@ namespace PEDL_Guia10_EjercicioUnico
         {
             CVertice nodo = new CVertice(valor);
             nodos.Add(nodo);
+            
+            return nodo;
+        }
+
+        public CVertice EliminarVertice(string valor)
+        {
+            CVertice nodo = new CVertice(valor);
+            nodos.Remove(nodo);
+
             return nodo;
         }
 
@@ -56,7 +65,7 @@ namespace PEDL_Guia10_EjercicioUnico
             return AgregarArco(vOrigen, vnDestino);
         }
 
-        public bool AgregarArco(CVertice origen, CVertice nDestino, int peso = 1)
+        public bool AgregarArco(CVertice origen, CVertice nDestino, int peso = 1) //Sobrecarga de la funcion AgregarArco
         {
             if (origen.ListaAdyacencia.Find(v => v.nDestino == nDestino) == null)
             {
