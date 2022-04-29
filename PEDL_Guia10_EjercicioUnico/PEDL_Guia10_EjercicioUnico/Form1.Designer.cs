@@ -34,9 +34,9 @@
             this.CMSCrearVertice = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.nuevoVerticeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.btnEliminarNodo = new System.Windows.Forms.Button();
             this.txtEliminarNodo = new System.Windows.Forms.TextBox();
+            this.btnEliminarNodo = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
             this.CMSCrearVertice.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -93,14 +93,12 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Eliminar vertice";
             // 
-            // label2
+            // txtEliminarNodo
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(23, 55);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(36, 13);
-            this.label2.TabIndex = 0;
-            this.label2.Text = "Nodo:";
+            this.txtEliminarNodo.Location = new System.Drawing.Point(65, 52);
+            this.txtEliminarNodo.Name = "txtEliminarNodo";
+            this.txtEliminarNodo.Size = new System.Drawing.Size(128, 20);
+            this.txtEliminarNodo.TabIndex = 3;
             // 
             // btnEliminarNodo
             // 
@@ -112,12 +110,14 @@
             this.btnEliminarNodo.UseVisualStyleBackColor = true;
             this.btnEliminarNodo.Click += new System.EventHandler(this.btnEliminarNodo_Click);
             // 
-            // txtEliminarNodo
+            // label2
             // 
-            this.txtEliminarNodo.Location = new System.Drawing.Point(65, 52);
-            this.txtEliminarNodo.Name = "txtEliminarNodo";
-            this.txtEliminarNodo.Size = new System.Drawing.Size(128, 20);
-            this.txtEliminarNodo.TabIndex = 3;
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(23, 55);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(36, 13);
+            this.label2.TabIndex = 0;
+            this.label2.Text = "Nodo:";
             // 
             // Simulador
             // 

@@ -41,7 +41,7 @@ namespace PEDL_Guia10_EjercicioUnico
             var_control = 0;
             ventanaVertice = new Vertice();
             this.SetStyle(ControlStyles.AllPaintingInWmPaint | ControlStyles.UserPaint | ControlStyles.OptimizedDoubleBuffer, true);
-            lbnodos.DataSource = 
+            
         }
 
         private void Pizarra_Paint(object sender, PaintEventArgs e)
@@ -204,10 +204,9 @@ namespace PEDL_Guia10_EjercicioUnico
                 MessageBox.Show("Debe de ingresar un nodo ");
             }
 
-            if (grafo.BuscarVertice(txtEliminarNodo.Text) == null)
+            if (grafo.BuscarVertice(txtEliminarNodo.Text) != null)
             {
-                MessageBox.Show("El dato que ingresó, no se encuentra en el grafo");
-                return;
+                
             }
             else
             {
