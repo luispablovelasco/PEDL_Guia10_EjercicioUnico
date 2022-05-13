@@ -21,6 +21,11 @@ namespace PEDL_Guia10_EjercicioUnico
         Dictionary<string, short> _banderas;
         Dictionary<string, short> _banderas_predeterminado;
 
+        public int distancianodo; //Guarda la distancia que hayy entre el nodo inicio en el algoritmo de Dijkstra
+        public Boolean Visitado; // Variable que sirve para marcar como visto el nodo en un recorrido
+        public CVertice Padre; //Nodo que sirve en los recorridos como el antecesor
+        public Boolean pesoasignado; //Variable que sirve en el algoritmo de Dijkstra
+
 
         // Propiedades
         public Color Color
@@ -66,9 +71,10 @@ namespace PEDL_Guia10_EjercicioUnico
             this.ListaAdyacencia = new List<CArco>();
             this._banderas = new Dictionary<string, short>();
             this._banderas_predeterminado = new Dictionary<string, short>();
-            this.Color = Color.Green;                   // Definimos el color del nodo
-            this.Dimensiones = new Size(size, size);    // Definimos las dimensiones del circulo
-            this.FontColor = Color.White;               // Color de la fuente
+            this.Color = Color.FromArgb(51, 204, 255);                   // Definimos el color del nodo
+            this.Dimensiones = new Size(size, size);                     // Definimos las dimensiones del circulo
+            this.FontColor = Color.Black;                                // Color de la fuente
+            this.Visitado = false;
 
         }
 
@@ -145,6 +151,21 @@ namespace PEDL_Guia10_EjercicioUnico
         public string ToString()
         {
             return this.Valor;
+        }
+
+        public void colorear(Graphics g)
+        {
+            SolidBrush b = new SolidBrush(Color.GreenYellow);
+            // Definimos donde dibujaremos el nodo
+            Rectangle areaNodo = new Rectangle(this._posicion.X - radio, this._posicion.Y - radio, this.dimensiones.Width, this.dimensiones.Height);
+            g.FillEllipse(b, areaNodo);
+            g.DrawString(this.Valor, new Font("Times New Roman", 14), new SolidBrush(color_fuente), this._posicion.X, this._posicion.Y, new StringFormat()
+            {
+                Alignment = StringAlignment.Center,
+                LineAlignment = StringAlignment.Center
+            });
+            g.DrawEllipse(new Pen(Brushes.Black, (float)1.0), areaNodo);
+            b.Dispose();
         }
     }
 }
